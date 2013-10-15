@@ -20,9 +20,9 @@ HOW
 ---
 
 1. Download the files from GitHub
-2. Copy the files to a folder within Sitecore CMS instance web root ( '<webroot>/layouts/debug' is a good option )
-3. Request the reporting page : 'http://<sitename>/path/to/page/cache-monitor.html' ( 'http://<sitename>/layouts/debug/cache-monitor.html' if you decided to go with suggested path)
-4. Get prepared for Zen ( or unexpected )       :)
+2. Copy the files to a folder within Sitecore CMS instance web root ( '&lt;webroot&gt;/layouts/debug' is a good option )
+3. Request the reporting page : 'http://&lt;sitename&gt;/path/to/page/cache-monitor.html' ( 'http://&lt;sitename&gt;/layouts/debug/cache-monitor.html' if you decided to go with suggested path)
+4. Get prepared for Zen &lt; or unexpected &gt; :)
 
 AND IF
 ------
