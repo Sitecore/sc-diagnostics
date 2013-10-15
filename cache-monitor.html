@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sitecore cache diagnostics</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="assets/visualsearch/css/reset.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="assets/visualsearch/css/icons.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="assets/visualsearch/css/workspace.css" type="text/css" media="screen" charset="utf-8" />
+    <style type="text/css">
+        .page-header
+        {
+            margin-bottom: 0px;
+        }
+
+        /* [BEGIN: Cache Info Card]------- */
+        .cc-container {
+            border: 1px solid #eeeeee; 
+            min-width: 400px; 
+            margin-bottom: 5px;
+        }
+
+        .cc-status-indicator {
+            width:5px;
+        }
+
+        .cc-status-bad {
+            background-color: red;
+        }
+
+        .cc-status-warn {
+            background-color: orange;
+        }
+
+        .cc-status-ok {
+            background-color: green;
+        }
+
+        .cc-status-neutural {
+            background-color: gray;
+        }
+
+        .cc-highlight-container {
+            border-right: 2px dashed #eeeeee; 
+            width: 80px; 
+            text-align: center;
+        }
+
+        .cc-highlight-text {
+            font-size: 24pt; 
+            padding: 5px;
+        }
+
+        .cc-details-container {
+            padding-left: 5px; 
+            padding-right: 5px;
+        }
+
+        .cc-details-name-container {
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .cc-details-info-container {
+            padding-top: 3px;
+        }
+
+        .cc-delta-icon {
+            display: inline-block;
+        }
+
+        .cc-delta-positive span.cc-delta-value{
+            color: green;
+        }
+
+        .cc-delta-positive div.cc-delta-icon {
+            background-image: url(assets/app/img/triangle-up-green.png);
+            width: 10px;
+            height: 9px;
+        }
+
+        .cc-delta-negative span.cc-delta-value{
+            color: red;
+        }
+
+        .cc-delta-negative div.cc-delta-icon {
+            background-image: url(assets/app/img/triangle-down-red.gif);
+            width: 11px;
+            height: 9px;
+        }
+
+        .cc-size-info-container {
+            padding-left: 15px;
+        }
+
+        .cc-size-info-text {
+            color: gray;
+        }
+        /* [END: Cache Info Card]------- */
+    </style>
+</head>
+<body>
+    <div style="padding-left: 15px;">
+        <div class="page-header">
+            <table>
+                <tr>
+                    <td style="vertical-align: middle; text-align: center;width: 50px; height: 50px;" >
+                        <img id="logo-img" src="assets/app/img/sc-logo.png" />
+                    </td>
+                    <td style="padding-left: 10px;"><h1>Cache diagnostics</h1></td>
+                </tr>
+            </table>
+        </div>
+        <div class="row" style="border-bottom: 1px solid #eeeeee;">
+                <div class="span12">
+                    <div style="padding-top:3px;">
+                        <div id="search_box_container"></div>
+                        <div id="search_query" style="color: gray; height:24px;background-color:#f7f7f9;border-top:1px solid #e1e1e8;border-bottom:1px solid #e1e1e8;margin: 3px 0px 3px 0px;"></div>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="span12" id="card-container">
+            </div>
+        </div>
+    </div>
+    <script src="assets/shared/js/jquery-1.9.0.js"></script>
+    <script src="assets/shared/js/jquery.ui.core.js"></script>
+    <script src="assets/shared/js/jquery.ui.widget.js"></script>
+    <script src="assets/shared/js/jquery.ui.position.js"></script>
+    <script src="assets/shared/js/jquery.ui.menu.js"></script>
+    <script src="assets/shared/js/jquery.ui.autocomplete.js"></script>
+    <script src="assets/shared/js/underscore-1.4.3.js"></script>
+    <script src="assets/shared/js/backbone-0.9.10.js"></script>
+    <script src="assets/shared/js/mustache.js"></script>
+    <script src="assets/visualsearch/js/visualsearch.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/views/search_box.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/views/search_facet.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/views/search_input.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/models/search_facets.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/models/search_query.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/utils/backbone_extensions.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/utils/hotkeys.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/utils/jquery_extensions.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/utils/search_parser.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/utils/inflector.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/visualsearch/js/templates/templates.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="assets/app/js/CollectionManager.js"></script>
+    <script src="assets/app/js/TemplateManager.js"></script>
+    <script src="assets/app/js/CacheInfo.js"></script>
+    <script src="assets/app/js/CacheView.js"></script>
+    <script src="assets/app/js/CacheInfoList.js"></script>
+    <script src="assets/app/js/CacheViewList.js"></script>
+    <script src="assets/app/js/SearchManager.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            window.visualSearch = VS.init({
+                container: $('#search_box_container'),
+                query: '',
+                showFacets: true,
+                unquotable: [
+                  'text',
+                  'account',
+                  'filter',
+                  'access'
+                ],
+                callbacks: {
+                    search: function (query, searchCollection) {
+                        SearchManager.applySearchCriteria( collectionManager.collection );
+                        var $query = $('#search_query');
+                        var searchMsg = '<span class="raquo">&raquo;</span>&nbsp;'
+                        if (!query) {
+                            searchMsg += 'Empty search query'
+                        } else {
+                            searchMsg += 'Search for: <b>' + searchCollection.serialize() + '</b>'
+                        }
+                        searchMsg += '&nbsp;yields <b>' + SearchManager.lastSearchHits + '</b> resuls out of <b>' + collectionManager.collection.length + '</b>';
+                        $query.html(searchMsg);
+                    },
+                    valueMatches: function (facet, searchTerm, callback) {
+                        callback(SearchManager.getOptionsForFacet(facet));
+                    },
+                    facetMatches: function (callback) {
+                        callback( SearchManager.getFacets(), { preserveOrder: true });
+                    }
+                }
+            });
+        });
+
+        // data model management
+        var collectionManager;
+        $(document).ready(function () {
+            var cacheInfoList = new CacheInfoList();
+            collectionManager = new CollectionManager(cacheInfoList);
+            // Create view list and associate it \w corresponding page area
+            var cacheViewList = new CacheViewList({ collection: cacheInfoList });
+            // Setting up update loop for cacheInfoPageMgr
+            runUpateLoop();
+        });
+
+        function runUpateLoop() {
+            $.ajax({
+                url: 'service/cache.ashx',
+                type: 'GET',
+                dataType: 'json',
+                success: function (jsonResponseData) {
+                    collectionManager.updateCollection(jsonResponseData);
+                    pulseLogo({success: true});
+                },
+                complete: function () {
+                    setTimeout(runUpateLoop, 5000);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    trace('CacheInfoPageManager: ' + textStatus, 'err');
+                    trace(errorThrown, 'err');
+                    pulseLogo({ success: false });
+                }
+            });
+        }
+
+        function pulseLogo(options) {
+            // TODO: indicate failed request
+            $('#logo-img').animate({width:'48px'}, 100);
+            $('#logo-img').animate({width: '40px'}, 150);
+        }
+    </script>
+</body>
+</html>

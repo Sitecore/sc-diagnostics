@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Cache info templates</title>
+
+    <script type="text/template" id="cache-card-template">
+        <table class="cc-container">
+        <tr>
+            <td class="cc-status-indicator cc-status-{{calcCacheStatusCSS}}">
+            </td>
+            <td class="cc-highlight-container">
+                <div class="cc-highlight-text">{{CacheUtilization}}%</div>
+            </td>
+            <td class="cc-details-container">
+                <div class="cc-details-name-container"><strong>{{CacheName}}</strong></div>
+                <div class="cc-details-info-container">
+                    <table>
+                        <tr>
+                            <td class="cc-delta-{{calcDeltaChangeCSS}}"><span class="cc-delta-value">{{CacheUtilizationDelta}}%</span><div class="cc-delta-icon"></div></td>
+                            <td class="cc-size-info-container"><b>Size:&nbsp;</b><span class="cc-size-info-text"><b>{{calcCacheSizeReadable}}</b> out of <b>{{calcMaxSizeReadable}}</b></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </table>
+    </script>
+</head>
+<body>
+</body>
+</html>
