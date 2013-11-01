@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7FAECB96-E3D9-4223-8A5B-3A39F1A1F969}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore.Diagnostics.Client</RootNamespace>
+    <AssemblyName>Sitecore.Diagnostics.Client</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\shared\css\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\app\html\cache-info-templates.html" />
+    <Content Include="assets\app\img\sc-logo.png" />
+    <Content Include="assets\app\img\triangle-down-red.gif" />
+    <Content Include="assets\app\img\triangle-up-green.png" />
+    <Content Include="assets\app\js\CacheInfo.js" />
+    <Content Include="assets\app\js\CacheInfo.min.js" />
+    <Content Include="assets\app\js\CacheInfoList.js" />
+    <Content Include="assets\app\js\CacheInfoList.min.js" />
+    <Content Include="assets\app\js\CacheView.js" />
+    <Content Include="assets\app\js\CacheView.min.js" />
+    <Content Include="assets\app\js\CacheViewList.js" />
+    <Content Include="assets\app\js\CacheViewList.min.js" />
+    <Content Include="assets\app\js\CollectionManager.js" />
+    <Content Include="assets\app\js\CollectionManager.min.js" />
+    <Content Include="assets\app\js\SearchManager.js" />
+    <Content Include="assets\app\js\SearchManager.min.js" />
+    <Content Include="assets\app\js\TemplateManager.js" />
+    <Content Include="assets\app\js\TemplateManager.min.js" />
+    <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="assets\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\shared\js\backbone-0.9.10.js" />
+    <Content Include="assets\shared\js\jquery-1.9.0.js" />
+    <Content Include="assets\shared\js\jquery.ui.autocomplete.js" />
+    <Content Include="assets\shared\js\jquery.ui.core.js" />
+    <Content Include="assets\shared\js\jquery.ui.menu.js" />
+    <Content Include="assets\shared\js\jquery.ui.position.js" />
+    <Content Include="assets\shared\js\jquery.ui.widget.js" />
+    <Content Include="assets\shared\js\mustache.js" />
+    <Content Include="assets\shared\js\underscore-1.4.3.js" />
+    <Content Include="assets\visualsearch\css\icons.css" />
+    <Content Include="assets\visualsearch\css\reset.css" />
+    <Content Include="assets\visualsearch\css\workspace.css" />
+    <Content Include="assets\visualsearch\img\embed\icons\cancel_search.png" />
+    <Content Include="assets\visualsearch\img\embed\icons\search_glyph.png" />
+    <Content Include="assets\visualsearch\js\models\search_facets.js" />
+    <Content Include="assets\visualsearch\js\models\search_query.js" />
+    <Content Include="assets\visualsearch\js\templates\templates.js" />
+    <Content Include="assets\visualsearch\js\utils\backbone_extensions.js" />
+    <Content Include="assets\visualsearch\js\utils\hotkeys.js" />
+    <Content Include="assets\visualsearch\js\utils\inflector.js" />
+    <Content Include="assets\visualsearch\js\utils\jquery_extensions.js" />
+    <Content Include="assets\visualsearch\js\utils\search_parser.js" />
+    <Content Include="assets\visualsearch\js\views\search_box.js" />
+    <Content Include="assets\visualsearch\js\views\search_facet.js" />
+    <Content Include="assets\visualsearch\js\views\search_input.js" />
+    <Content Include="assets\visualsearch\js\visualsearch.js" />
+    <Content Include="cache-monitor.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\app\js\CacheInfo.coffee" />
+    <Content Include="assets\app\js\CacheInfoList.coffee" />
+    <Content Include="assets\app\js\CacheView.coffee" />
+    <Content Include="assets\app\js\CacheViewList.coffee" />
+    <Content Include="assets\app\js\CollectionManager.coffee" />
+    <Content Include="assets\app\js\SearchManager.coffee" />
+    <Content Include="assets\app\js\TemplateManager.coffee" />
+    <Content Include="assets\visualsearch\js\templates\search_box.jst" />
+    <Content Include="assets\visualsearch\js\templates\search_facet.jst" />
+    <Content Include="assets\visualsearch\js\templates\search_input.jst" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61134/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
