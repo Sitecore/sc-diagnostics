@@ -83,6 +83,8 @@
     <Content Include="assets\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="assets\bootstrap\js\bootstrap.js" />
     <Content Include="assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\introjs\css\introjs.css" />
+    <Content Include="assets\introjs\js\intro.js" />
     <Content Include="assets\shared\js\backbone-0.9.10.js" />
     <Content Include="assets\shared\js\ie-ensure-indexOf.js" />
     <Content Include="assets\shared\js\jquery-1.9.0.js" />

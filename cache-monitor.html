@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/visualsearch/css/reset.css" type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet" href="assets/visualsearch/css/icons.css" type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet" href="assets/visualsearch/css/workspace.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="assets/introjs/css/introjs.css" type="text/css"/>
     <style type="text/css">
         .page-header
         {
@@ -105,22 +106,23 @@
             <table>
                 <tr>
                     <td style="vertical-align: middle; text-align: center;width: 50px; height: 50px;" >
-                        <img id="logo-img" src="assets/app/img/sc-logo.png" />
+                        <img id="logo-img" src="assets/app/img/sc-logo.png" data-step="1" data-intro="The application periodically requests update from the server. The logo image also indicates updates received from the server ( just monitor it for a little while )" />
                     </td>
                     <td style="padding-left: 10px;"><h1>Cache diagnostics</h1></td>
+                    <td><button type="button" id="explain-me-btn" class="btn btn-danger" style="margin-left: 20px;" onclick="javascript:introJs().start();">Explain to me how it works</button></td>
                 </tr>
             </table>
         </div>
         <div class="row" style="border-bottom: 1px solid #eeeeee;">
             <div class="span12">
                 <div style="padding-top:3px;">
-                    <div id="search_box_container"></div>
-                    <div id="search_query" style="color: gray; height:24px;background-color:#f7f7f9;border-top:1px solid #e1e1e8;border-bottom:1px solid #e1e1e8;margin: 3px 0px 3px 0px;"></div>
+                    <div id="search_box_container" data-intro="The search box allows you to narrow list of items being reviewed based on certain criteria. Click on the search box to find out available criteria list." data-step="2"></div>
+                    <div id="search_query" data-intro="The search status area provides detailed information on the last search operation performed." data-step="3" style="color: gray; height:24px;background-color:#f7f7f9;border-top:1px solid #e1e1e8;border-bottom:1px solid #e1e1e8;margin: 3px 0px 3px 0px;"></div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="span12" id="card-container">
+            <div class="span12" id="card-container" data-intro="The area below contains list of 'cache info cards' where each card contains information about a particular Sitecore cache" data-step="4" data-position="top">
             </div>
         </div>
     </div>
@@ -148,6 +150,7 @@
     <script src="assets/visualsearch/js/utils/search_parser.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/visualsearch/js/utils/inflector.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/visualsearch/js/templates/templates.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/introjs/js/intro.js"></script>
 
     <script src="assets/app/js/CollectionManager.js"></script>
     <script src="assets/app/js/TemplateManager.js"></script>
